@@ -4,7 +4,7 @@
 
 require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
-for($page = 0; $page < 150; $page+=50)
+for($page = 0; $page < 50; $page+=50)
 {
 $url  = 'http://www.worldlii.org/cgi-bin/sinosrch.cgi?method=auto;meta=%2Fworldlii;mask_path=;mask_world=;query=a;results=50;submit=Search;rank=on;callback=off;legisopt=;view=relevance;offset='.$page;
 $html = file_get_html($url);
