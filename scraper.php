@@ -10,8 +10,7 @@ $url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit
 $html = file_get_html($url);
 foreach($html->find("//[@id='view']/ol/li//p")as $element)
 {
- $links = $element->find("a",0)->href;
- echo "$links\n";
+echo $element;
 }
 
 }
