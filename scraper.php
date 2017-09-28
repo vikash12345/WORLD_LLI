@@ -7,12 +7,12 @@ require 'scraperwiki/simple_html_dom.php';
 //5369780
 for($page = 0; $page < 20; $page+=20)
 {
-  sleep(1000);
+  
   echo "$page\n";
 
 $url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit=Search;rank=on;callback=on;method=auto;meta=%2Fcommonlii;lii=CommonLII;offset='.$page;
- $NEWLINK = file_get_html($url);
-  
+  $NEWLINK = file_get_html($url);
+  sleep(1000);
   if($NEWLINK){
 foreach($NEWLINK->find("//*[@id='view']/ol/li/p")as $element)
 {
@@ -22,7 +22,6 @@ foreach($NEWLINK->find("//*[@id='view']/ol/li/p")as $element)
  $record = array( 'pagelink' => $url, 'casename' => $name ,'detailpagelink' => $links );
   
  scraperwiki::save(array('pagelink','casename','detailpagelink'), $record);
- sleep(1000);
  
  
 } 
