@@ -12,7 +12,7 @@ for($page = 0; $page < 120; $page+=20)
 
 $url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit=Search;rank=on;callback=on;method=auto;meta=%2Fcommonlii;lii=CommonLII;offset='.$page;
   $NEWLINK = file_get_html($url);
-  sleep(20);
+  sleep(100);
   if($NEWLINK){
 foreach($NEWLINK->find("//*[@id='view']/ol/li/p")as $element)
 {
