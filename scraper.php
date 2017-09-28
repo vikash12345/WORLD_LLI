@@ -4,7 +4,7 @@
 
 require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
-for($page = 20; $page < 40; $page+=20)
+for($page = 60; $page < 100; $page+=20)
 {
 $url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit=Search;rank=on;callback=on;method=auto;meta=%2Fcommonlii;lii=CommonLII;offset='.$page;
  $NEWLINK = file_get_html($url);
@@ -15,7 +15,7 @@ foreach($NEWLINK->find("//*[@id='view']/ol/li/p")as $element)
   $links = $element->find("a",0)->plaintext;
   $name = $element->find("a",0)->href;
  
- $record = array( 'pagelink' => $NEWLINK, 'casename' => $name ,'detailpagelink' => $links );
+ $record = array( 'pagelink' => $url, 'casename' => $name ,'detailpagelink' => $links );
   
  scraperwiki::save(array('pagelink','casename','detailpagelink'), $record);
  
