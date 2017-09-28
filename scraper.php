@@ -7,7 +7,8 @@ require 'scraperwiki/simple_html_dom.php';
 for($page = 0; $page < 100; $page+=50)
 {
   $NEWLINK = 'http://www.worldlii.org/cgi-bin/sinosrch.cgi?method=auto;meta=%2Fworldlii;mask_path=;mask_world=;query=a;results=50;submit=Search;rank=on;callback=off;legisopt=;view=relevance;offset='.$page;
-  echo "$NEWLINK\n";
+  $html = file_get_html($NEWLINK);
+  echo $html;
 }
 
 
