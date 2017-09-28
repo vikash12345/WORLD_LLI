@@ -6,19 +6,14 @@ require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
 for($page = 0; $page < 150; $page+=50)
 {
-   $MyWebsite = 'http://www.worldlii.org/cgi-bin/sinosrch.cgi?method=auto;meta=%2Fworldlii;mask_path=;mask_world=;query=a;results=50;submit=Search;rank=on;callback=off;legisopt=;view=relevance;offset='.$page;
-	// create a new cURL resource
-$ch = curl_init();
-
-// set URL and other appropriate options
-curl_setopt($ch, CURLOPT_URL, $MyWebsite);
-curl_setopt($ch, CURLOPT_HEADER, 0);
-
-// grab URL and pass it to the browser
-curl_exec($ch);
-
-// close cURL resource, and free up system resources
-curl_close($ch);
+$MyWebsite = 'http://www.worldlii.org/cgi-bin/sinosrch.cgi?method=auto;meta=%2Fworldlii;mask_path=;mask_world=;query=a;results=50;submit=Search;rank=on;callback=off;legisopt=;view=relevance;offset='.$page;
+$ch = curl_init($MyWebsite);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Host: graph.facebook.com'));
+$output = curl_exec($ch);
+curl_close($ch); 
  
 
 }
