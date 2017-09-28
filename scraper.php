@@ -7,6 +7,7 @@ require 'scraperwiki/simple_html_dom.php';
 for($page = 0; $page < 5369780; $page+=20)
 {
   sleep(1000);
+  echo "$page\n";
 
 $url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit=Search;rank=on;callback=on;method=auto;meta=%2Fcommonlii;lii=CommonLII;offset='.$page;
  $NEWLINK = file_get_html($url);
