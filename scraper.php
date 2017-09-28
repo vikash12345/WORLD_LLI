@@ -4,9 +4,9 @@
 
 require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
-for($page = 0; $page < 50; $page+=500)
+for($page = 0; $page < 20; $page+=50)
 {
-  echo $page;
+  echo "$page\n";
 }
 
 
