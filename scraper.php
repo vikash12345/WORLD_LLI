@@ -6,7 +6,7 @@ require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
 for($page = 0; $page < 20; $page+=20)
 {
-$url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit=Search;rank=on;callback=on;method=auto;meta=%2Fcommonlii;lii=CommonLII&offset='.$page;
+$url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit=Search;rank=on;callback=on;method=auto;meta=%2Fcommonlii;lii=CommonLII;offset='.$page;
 $html = file_get_html($url);
 foreach($html->find("//[@id='view']/ol/li//p")as $element)
 {
