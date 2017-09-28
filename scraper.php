@@ -12,7 +12,8 @@ $url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit
   
 foreach($NEWLINK->find("//*[@id='view']/ol/li/p")as $element)
 {
-  echo $element;
+  $links = $element->find("a",0)plaintext;
+ echo "$links \n"
 }
 
 }
