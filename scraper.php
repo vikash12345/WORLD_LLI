@@ -7,20 +7,47 @@ require 'scraperwiki/simple_html_dom.php';
 for($page = 0; $page < 100; $page+=50)
 {
   $NEWLINK = 'http://www.worldlii.org/cgi-bin/sinosrch.cgi?method=auto;meta=%2Fworldlii;mask_path=;mask_world=;query=a;results=50;submit=Search;rank=on;callback=off;legisopt=;view=relevance;offset='.$page;
+	     $cHeadres = array(
+      'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      'Accept-Language: en-US,en;q=0.5',
+      'Connection: Keep-Alive',
+      'Pragma: no-cache',
+      'Cache-Control: no-cache'
+     );
+
+ $MyWebsite = $NEWLINK;
+
+ function dlPage($href) {
+  global $cHeadres;
+
   $ch = curl_init();
-  curl_setopt($ch, CURLOPT_HEADER, 0);
-  curl_setopt($ch, CURLOPT_VERBOSE, 0);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
-  curl_setopt($ch, CURLOPT_URL, urlencode($NEWLINK));
-  $response = curl_exec($ch);
-  foreach($NEWLINK->find("//*[@id='view']/ol")as $element)
-  {
-    echo $element;
+  if($ch){
+   curl_setopt($ch, CURLOPT_URL, $href);
+   curl_setopt($ch, CURLOPT_HTTPHEADER, $cHeadres);
+   curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+   curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookies.txt');
+   curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookies.txt');
+   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+   curl_setopt($ch, CURLOPT_HEADER, false);
+   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+   curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+   $str = curl_exec($ch);
+   curl_close($ch);
+
+   $dom = new simple_html_dom();
+   $dom->load($str);
+   return $dom;
   }
-  
-  
-  curl_close($ch);
+ }
+
+ $maincode = dlPage($MyWebsite);
+ echo $maincode;
+ 
+
+ } 
+ 
+
 }
 
 
