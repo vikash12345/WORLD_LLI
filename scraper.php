@@ -18,10 +18,12 @@ foreach($NEWLINK->find("//*[@id='view']/ol/li/p")as $element)
  $record = array( 'pagelink' => $url, 'casename' => $name ,'detailpagelink' => $links );
   
  scraperwiki::save(array('pagelink','casename','detailpagelink'), $record);
+ sleep(1000);
  
  
- 
-}
+} 
+   sleep(1000);
+
   }
 
 }
