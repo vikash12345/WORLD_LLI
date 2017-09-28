@@ -4,11 +4,11 @@
 
 require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
-for($page = 0; $page < 50; $page+=50)
+for($page = 0; $page < 50; $page+=20)
 {
-$url  = 'http://www.worldlii.org/cgi-bin/sinosrch.cgi?method=auto;meta=%2Fworldlii;mask_path=;mask_world=;query=a;results=50;submit=Search;rank=on;callback=off;legisopt=;view=relevance;offset='.$page;
+$url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit=Search;rank=on;callback=on;method=auto;meta=%2Fcommonlii;lii=CommonLII&offset='.$page;
 $html = file_get_html($url);
-                      echo $html;
+ echo $html;
 }
 
 
