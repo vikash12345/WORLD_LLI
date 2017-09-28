@@ -10,7 +10,7 @@ $url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit
  $NEWLINK = file_get_html($url)
   
   
-foreach($NEWLINK ->find("//*[@id='view']/ol/li/p")as $element)
+foreach($NEWLINK->find("//*[@id='view']/ol/li/p")as $element)
 {
   echo $element;
 }
