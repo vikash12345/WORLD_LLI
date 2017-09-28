@@ -8,9 +8,12 @@ for($page = 0; $page < 20; $page+=20)
 {
 $url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit=Search;rank=on;callback=on;method=auto;meta=%2Fcommonlii;lii=CommonLII&offset='.$page;
 $html = file_get_html($url);
- echo $html;
+foreach($html->find("//*[@id='view']/ol")as $element)
+{
+ echo $element;
 }
 
+}
 
 //
 // // Read in a page
