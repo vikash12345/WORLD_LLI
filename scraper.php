@@ -18,7 +18,7 @@ $query = curl_exec($curl_handle);
 curl_close($curl_handle);
   
   
-foreach($html->find("//*[@id='view']/ol/li/p")as $element)
+foreach($curl_handle->find("//*[@id='view']/ol/li/p")as $element)
 {
   echo $element;
 }
