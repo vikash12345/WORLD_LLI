@@ -14,6 +14,12 @@ for($page = 0; $page < 100; $page+=50)
   curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
   curl_setopt($ch, CURLOPT_URL, urlencode($NEWLINK));
   $response = curl_exec($ch);
+  foreach($NEWLINK->find("//*[@id='view']/ol")as $element)
+  {
+    echo $element;
+  }
+  
+  
   curl_close($ch);
 }
 
