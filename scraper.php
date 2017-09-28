@@ -41,7 +41,8 @@ function get_web_page( $url )
         $header['content'] = $content;
         return $header;
     }
- 
+ $maincode = get_web_page( $url );
+    echo $maincode;
 
 }
 
