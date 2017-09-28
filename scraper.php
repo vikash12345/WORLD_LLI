@@ -25,7 +25,7 @@ foreach($NEWLINK->find("//*[@id='view']/ol/li/p")as $element)
  
  
 } 
-   sleep(10);
+
 
   }
 
