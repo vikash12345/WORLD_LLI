@@ -7,18 +7,10 @@ require 'scraperwiki/simple_html_dom.php';
 for($page = 20; $page < 40; $page+=20)
 {
 $url  = 'http://www.commonlii.org/cgi-bin/sinosrch.cgi?query=a;results=20;submit=Search;rank=on;callback=on;method=auto;meta=%2Fcommonlii;lii=CommonLII;offset='.$page;
+ $NEWLINK = file_get_html($url)
   
   
-  $curl_handle=curl_init();
-curl_setopt($curl_handle, CURLOPT_URL,$url);
-curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
-curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($curl_handle, CURLOPT_USERAGENT, 'Your application name');
-$query = curl_exec($curl_handle);
-curl_close($curl_handle);
-  
-  
-foreach($curl_handle->find("//*[@id='view']/ol/li/p")as $element)
+foreach($NEWLINK ->find("//*[@id='view']/ol/li/p")as $element)
 {
   echo $element;
 }
