@@ -5,7 +5,7 @@
 require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
 //5369780
-for($page = 358220; $page < 5369780; $page+=20)
+for($page = 373220; $page < 5369780; $page+=20)
 {
   
   echo "$page\n";
